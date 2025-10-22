@@ -1,1 +1,18 @@
-
+name: national-mechanics-bot
+region: nyc
+services:
+  - name: api
+    environment_slug: python
+    instance_size_slug: basic-xxs
+    instance_count: 1
+    build_command: pip install -r requirements.txt
+    run_command: uvicorn app_chat:app --host 0.0.0.0 --port $PORT
+    envs:
+      - key: OPENAI_API_KEY
+        scope: RUN_TIME
+        type: SECRET
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+        scope: RUN_TIME
+    routes:
+      - path: /
