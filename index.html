@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>National Mechanics Bot</title>
+  <style>
+    body { max-width: 640px; margin: 20px auto; font-family: system-ui, sans-serif; }
+    textarea, input, button { width: 100%; padding: 10px; margin: 6px 0; }
+    pre { background:#f6f6f6; padding:10px; white-space:pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Paul @ National Mechanics</h1>
+  <textarea id="msg" rows="4" placeholder="Type a message…"></textarea>
+  <button id="send">Send</button>
+  <pre id="out"></pre>
+  <script>
+    const url = location.origin + "/chat";
+    document.getElementById('send').onclick = async () => {
+      const message = document.getElementById('msg').value.trim();
+      if (!message) return;
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({ session_id: "browser", message })
+      });
+      const data = await res.json();
+      document.getElementById('out').textContent =
+        (data.reply || "(no reply)") + "\n\n" +
+        (data.quote ? JSON.stringify(data.quote, null, 2) : "");
+    };
+  </script>
+</body>
+</html>

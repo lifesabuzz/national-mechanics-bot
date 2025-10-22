@@ -1,0 +1,17 @@
+# National Mechanics — Pricing Policies (v1)
+gratuity_rate: 0.20
+tax_food_rate: 0.08
+tax_alcohol_rate: 0.10
+private_rental_threshold_guests: 50
+private_rental_weekday_rate_per_hour: 250
+private_rental_weekend_rate_per_hour: 500
+open_bar_participation_required: true
+second_bartender_threshold_guests: 50
+second_bartender_rate_per_hour: 50
+second_bartender_applies_when: any_alcohol_service
+staff_is_taxable: false
+disclosures:
+  - "Food taxed at 8%; liquor/beer/wine at 10%."
+  - "Prices are before tax and 20% gratuity."
+  - "All guests must participate in open bar; shots and doubles not included."
+  - "Private rental may apply for larger groups and peak times."
